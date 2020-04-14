@@ -1,0 +1,132 @@
+@import "fonts";
+
+
+
+/* components/header.php */
+/* components/header-nouser.php */
+#stackin-header-nav {
+    background-color: white !important;
+    width: 100%;
+    z-index: 1000;
+    .nav-item .nav-link {
+        font-family: 'BigJohn', arial, sans-serif;
+    }
+}
+
+
+/* components/homepage-hero.php */
+#section-hero {
+    background-color: white;
+    color: black;
+    h1 {
+        font-size: 56px;
+        text-transform: uppercase;
+        color: black;
+        -webkit-text-fill-color: black; /* Will override color (regardless of order) */
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: black;
+    }
+    p {
+        font-style: italic;
+    }
+    ol {
+        max-width: 340px;
+        // $breakpoint-tablet: 768px;
+        @media (min-width: 768px) {
+            max-width: 440px;
+        }
+    }
+}
+
+
+/* components/about.php */
+#section-about {
+    background-color: gold;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    .card-group .card {
+        border: none;
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        .card-header {
+            border: none;
+        }
+        .card-title {
+            border: none;
+            font-family: 'BigJohn', Arial, sans-serif;
+        }
+        .card-text {
+            font-family: 'SlimJoe', Arial, sans-serif;
+        }
+        .card-footer {
+            border: none;
+        }
+    }
+
+}
+
+
+
+/* components/signup.php */
+#section-signup {
+    padding-top: 72px;
+    // background-color: gold;
+    background-color: white;
+    color: black;
+    // padding-bottom: 88px;
+    .stackin-signup-input {
+        min-width: 400px;max-width: 1200px;
+    }
+    .login-link {
+        a:link, a:visited {
+            color: blue;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        a:hover, a:active {
+            color: darkblue;
+        }
+    }
+}
+
+#section-login {
+    padding-top: 72px;
+    padding-bottom: 88px;
+    background-color: gold;
+    .stackin-login-input {
+        min-width: 400px;
+        max-width: 1200px;
+    }
+    .login-link {
+        a:link, a:visited {
+            color: blue;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        a:hover, a:active {
+            color: darkblue;
+        }
+        margin-bottom: 88px;
+    }
+}
+
+
+
+/* components/footer.php */
+/* components/footer-nouser.php */
+#stackin-footer {
+
+    // width: 100%;
+    background-color: gray;
+    color: white;
+    a:link, a:visited, a:hover, a:active {
+        color: white;
+    }
+    a:hover {
+        text-decoration: none;
+        font-weight: bold;
+    }
+    // min-height: 50px;
+}
