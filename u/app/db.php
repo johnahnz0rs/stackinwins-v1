@@ -4,7 +4,7 @@
 $dbhost = "mysql.stackinwins.com";
 $dbname = "stackinwins_com";
 $dbuser = "stackin_dbz0rs";
-$dbpass = "St4ck1337";
+$dbpass = "easy2remember";
 
 /* open connection */
 try {

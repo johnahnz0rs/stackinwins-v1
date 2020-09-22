@@ -6,8 +6,8 @@
 // -- if good, then set the date param, get user's daily wins and fwd to dash
 
 session_start();
-require '../db.php';
 date_default_timezone_set('America/Los_Angeles');
+require '../db.php';
 
 // check for username
 $username = $_POST['username'];
@@ -24,13 +24,15 @@ $user = $sqlUser->rowCount() ? $sqlUser->fetch(PDO::FETCH_ASSOC) : null;
 // no username
 if ( !$user ) {
     setcookie('err_no_such_user', 'Username not found; please try again.', time()+7, '/');
-    header('Location: /login');
+    $headerString = 'Location: /login';
+    header($headerString);
 // yes username; now check pass
 } else {
     // bad pass
     if ( !password_verify($password, $user['pass_hash']) ) {
         setcookie('err_bad_pass', 'Incorrect password; please try again', time()+7, '/');
-        header('Location: /login');
+        $headerString = 'Location: /login';
+        header($headerString);
     // good pass
     // good pass
     // good pass
@@ -43,7 +45,6 @@ if ( !$user ) {
         $userId = $user['id'];
         setcookie('user_id', $userId, time()+60*60*24, '/');
         setcookie('username', $username, time()+60*60*24, '/');
-        usleep(500000);
 
         /* set date and fwd to dashboard */
         $dateToday = date( 'Y-m-d' );

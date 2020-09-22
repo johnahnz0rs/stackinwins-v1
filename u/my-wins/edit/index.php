@@ -1,49 +1,40 @@
 <?php
-
-/* What this page does:
-
-- Section 1: validate user login; if no login, send to signout.
-- Section 2: gather static variables
-- Section 3: get the win in question
-- Section 4: display a form, method post, action ...
-
+session_start();
+/*
+show and edit one dailyWin
 */
 
-// SECTION 1
-session_start();
+// validate
 if ( !isset($_COOKIE['user_id']) or !isset($_COOKIE['username']) or !isset($_GET['id']) ) {
-    header('Location: /u/signout');
+    $headerString = 'Location: /u/signout';
+    header($headerString);
 }
 
 
-// SECTION 2
+// requires & vars
 require '../../app/db.php';
-$userId = strval($_COOKIE['user_id']);
-$username = strval($_COOKIE['username']);
-$winId = strval($_GET['id']);
+$userId = $_COOKIE['user_id'];
+$username = $_COOKIE['username'];
+$winId = $_GET['id'];
 
 
-// SECTION 3
-$sqlGetWin = $db->prepare("
-    SELECT win FROM daily_wins WHERE user_id = :userId and id = :winId
-");
+// sql
+$sqlGetWin = $db->prepare("SELECT win FROM daily_wins WHERE user_id = {$userId} and id = {$winId}");
 try {
-    $sqlGetWin->execute([
-        'userId' => $userId,
-        'winId' => $winId
-    ]);
+    $sqlGetWin->execute();
 } catch(PDOException $e) {
     $output .= $e->getMessage();
     echo $output;
+    die();
 }
 $win = $sqlGetWin->rowCount() ? $sqlGetWin->fetch(PDO::FETCH_ASSOC) : null;
 
 if (!$win) {
-    header('Location: ../../u/signout');
+    $headerString = 'Location: ../../u/signout';
+    header($headerString);
+    // echo 'u/mywins/edit?id= --> if (!win)';
+    // die();
 }
-
-// var_dump($win);
-// echo 'lol ' . $userId . ', ' . $username . ', ' . $winId;
 
 require_once '../../components/header.php';
 ?>
@@ -91,7 +82,7 @@ require_once '../../components/header.php';
 
 
 
-<script>
+<!-- <script>
 $(document).ready(function() {
 
     var newWinsCount = 0;
@@ -109,7 +100,7 @@ $(document).ready(function() {
 });
 
 
-</script>
+</script> -->
 
 <?php
 require_once '../../components/footer.php';

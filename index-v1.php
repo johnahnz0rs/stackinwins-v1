@@ -23,12 +23,12 @@ if ( isset($_COOKIE['user_id']) and isset($_COOKIE['username']) and (strlen($_CO
     ?>
 
     <!-- homepage hero -->
-    <?php include_once 'components/section-homepage-hero-2.php'; ?>
+    <?php include_once 'components/section-homepage-hero.php'; ?>
     <!-- end homepage hero -->
 
 
-    <!-- about blurb -->
-    <?php include_once 'components/section-about-blurb.php'; ?>
+    <!-- about -->
+    <?php include_once 'components/section-about.php'; ?>
     <!-- end about -->
 
 

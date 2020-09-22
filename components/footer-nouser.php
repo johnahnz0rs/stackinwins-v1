@@ -9,23 +9,61 @@
     <div class="d-md-none">
         <div class="d-flex justify-content-center">
             <ul class="list-unstyled">
-                <li class="footer-link"><a href="https://www.instagram.com/watson_fit/" target="_blank">&nbsp;<i class="fab fa-instagram"></i> @watson_fit</a></li>
+                <li class="footer-link">
+                    <a href="/">Home</a>
+                </li>
+                <li class="footer-link">
+                    <a href="/#section-about">About</a>
+                </li>
+                <!-- <li class="footer-link">
+                    <a href="">FAQ</a>
+                </li> -->
+                <!-- <li class="footer-link">
+                    <a href="">Contact</a>
+                </li> -->
+                <li class="footer-link">
+                    <a href="/login">Log In</a>
+                </li>
+                <li class="footer-link">
+                    <a href="/#section-signup">Sign Up</a>
+                </li>
+
+
+
+
+                <!-- <li class="footer-link"><a href="https://www.instagram.com/watson_fit/" target="_blank">&nbsp;<i class="fab fa-instagram"></i> @watson_fit</a></li>
                 <li class="footer-link"><a href="https://www.youtube.com/channel/UCWUxLYGeeIKxxioUqL54Q8g" target="_blank"><i class="fab fa-youtube"></i> GP- Penitentiary Life Wes Watson</a></li>
                 <li class="footer-link"><a href="https://www.youtube.com/channel/UCLCCdLkeLN_gUddVxPyjAlQ" target="_blank"><i class="fab fa-youtube"></i> Wes Watson - Walkin The Yard</a></li>
-                <li class="footer-link"><a href="/#section-about"><i class="fas fa-link"></i> About StackinWins.com</a></li>
+                <li class="footer-link"><a href="/#section-about"><i class="fas fa-link"></i> About StackinWins.com</a></li> -->
             </ul>
         </div>
     </div>
 
     <!-- desktop footer -->
     <div class="d-none d-md-flex justify-content-around">
-        <a href="https://www.instagram.com/watson_fit/" target="_blank">&nbsp;<i class="fab fa-instagram"></i> @watson_fit</a>
+        <!-- <a href="https://www.instagram.com/watson_fit/" target="_blank">&nbsp;<i class="fab fa-instagram"></i> @watson_fit</a>
         <a href="https://www.youtube.com/channel/UCWUxLYGeeIKxxioUqL54Q8g" target="_blank"><i class="fab fa-youtube"></i> GP- Penitentiary Life Wes Watson</a>
         <a href="https://www.youtube.com/channel/UCLCCdLkeLN_gUddVxPyjAlQ" target="_blank"><i class="fab fa-youtube"></i> Wes Watson - Walkin The Yard</a>
-        <a href="/#section-about"><i class="fas fa-link"></i> About StackinWins.com</a>
+        <a href="/#section-about"><i class="fas fa-link"></i> About StackinWins.com</a> -->
+        <div class="d-flex justify-content-center">
+            <ul class="list-unstyled">
+                <li class="footer-link">
+                    <a href="/">Home</a>
+                </li>
+                <li class="footer-link">
+                    <a href="/#section-about">About</a>
+                </li>
+                <li class="footer-link">
+                    <a href="/login">Log In</a>
+                </li>
+                <li class="footer-link">
+                    <a href="/#section-signup">Sign Up</a>
+                </li>
+            </ul>
+        </div>
     </div>
 
-    <p class="my-3 text-justify mx-auto" style="max-width: 350px;">stackinwins.com is not affiliated with Wes Watson from Dago. But we do think he's a great American philsopher, dropping hard-earned wisdom on the world, and we appreciate it. We're showing gratitude with action, both by building this site and by STACKIN our wins every single day — we STACK em high.</p>
+    <p class="my-3 text-justify mx-auto" style="max-width: 350px;">stackinwins.com is not affiliated with <a href="https://www.instagram.com/watson_fit/" target="_blank" style="color = white">Wes Watson</a>, but he is a role model of ours; he taught us to STACK wins.</p>
 
 </div>
 

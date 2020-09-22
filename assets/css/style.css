@@ -38,34 +38,25 @@ body {
     /* Will override color (regardless of order) */
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: black; }
-  #section-hero p {
-    font-style: italic; }
-  #section-hero ol {
-    max-width: 340px; }
-    @media (min-width: 768px) {
-      #section-hero ol {
-        max-width: 440px; } }
 
 /* components/about.php */
 #section-about {
   background-color: gold;
-  padding-top: 80px;
-  padding-bottom: 80px; }
-  #section-about .card-group .card {
-    border: none;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white; }
-    #section-about .card-group .card .card-header {
-      border: none; }
-    #section-about .card-group .card .card-title {
-      border: none;
-      font-family: 'BigJohn', Arial, sans-serif; }
-    #section-about .card-group .card .card-text {
-      font-family: 'SlimJoe', Arial, sans-serif; }
-    #section-about .card-group .card .card-footer {
-      border: none; }
+  padding: 80px 40px; }
+  #section-about .blurb {
+    margin-bottom: 36px; }
+  #section-about h2 {
+    color: #ffffff;
+    text-shadow: 2px 2px 0 #090909;
+    font-size: 38px;
+    font-weight: bold; }
+  #section-about h4 {
+    color: #111111;
+    /* text-shadow: 2px 2px 0 rgba(0,0,0,1); */ }
+  #section-about a.btn.btn-lg.btn-outline-dark {
+    border-width: 3px; }
 
-/* components/signup.php */
+/* /signup */
 #section-signup {
   padding-top: 72px;
   background-color: white;
@@ -80,6 +71,7 @@ body {
   #section-signup .login-link a:hover, #section-signup .login-link a:active {
     color: darkblue; }
 
+/* /login */
 #section-login {
   padding-top: 72px;
   padding-bottom: 88px;

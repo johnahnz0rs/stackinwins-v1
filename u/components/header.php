@@ -1,9 +1,8 @@
 <?php
 
 
-
-
 ?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -18,7 +17,8 @@
     <!-- bootstrap css -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- custom css -->
-    <link rel="stylesheet" href="/assets/css/style.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- <link rel="stylesheet" href="/assets/css/style.min.css"> -->
 
     <title>STACKIN wins</title>
 
@@ -45,17 +45,20 @@
         <!-- NAV-ITEMS -->
         <div class="collapse navbar-collapse navbar-right" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="/u/about">About</a>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="/u/account">Account</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/u/dash">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/u/report">Report</a>
+                    <a class="nav-link" href="/u/my-wins">My Program</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/u/my-wins">My Wins</a>
+                    <a class="nav-link" href="/u/faq">FAQ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/u/signout">Sign Out</a>

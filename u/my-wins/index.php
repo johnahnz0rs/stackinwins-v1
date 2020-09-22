@@ -1,30 +1,26 @@
 <?php
 
-/*
-WHAT THIS PAGE DOES
-- Section 1: validate login
-- Section 2: set static vars
-- Section 3:
-- Section 4:
+session_start();
 
+/*
+- show the user's dailyWins
+- name the page My Daily Program
 */
 
 
-// SECTION 1
-session_start();
+// validation
 if ( !isset($_COOKIE['user_id']) or !isset($_COOKIE['username']) ) {
     header('Location: /u/signout');
 }
 
 
-// SECTION 2
+// requires & vars
 require '../app/db.php';
 $userId = $_COOKIE['user_id'];
 $username = $_COOKIE['username'];
 
 
 // get this user's wins
-// you're gonna need a bunch of forms to update or delete.
 $sqlDailyWins = $db->prepare("
     SELECT id, win FROM daily_wins WHERE user_id = :userId ORDER BY id
 ");
@@ -37,7 +33,7 @@ try {
     echo $output;
 }
 $dailyWins = $sqlDailyWins->rowCount() ? $sqlDailyWins->fetchAll(PDO::FETCH_ASSOC) : null;
-$oldWinsCount = 0;
+// $oldWinsCount = 0;
 
 require_once '../components/header.php';
 ?>
@@ -56,9 +52,24 @@ require_once '../components/header.php';
 
     <div class="col-12 col-md-4 mx-auto">
 
-        <h1 class="font-big-john text-center mt-5 pt-5">My Wins</h1>
-        <p class="font-slim-joe text-center pt-1 pb-4 " style="font-size: .8em;">You can edit the wins that automatically appear every day. Let's get this money.</p>
+        <h1 class="font-big-john text-center mt-5 pt-5">Daily Program</h1>
+        <p class="font-slim-joe text-center pt-1 pb-4 " style="font-size: .8em;">STACK these wins EVERY Day to keep your Self-Confidence high. Self-Love is only attained through Action.</p>
 
+
+
+        <div class="mb-5">
+            <form id="form-add-new-daily-win" name="form-add-new-daily-win" action="../app/add-new-win.php" method="POST">
+
+                <!-- new win -->
+                <textarea id="input-add-new-daily-win" name="new-win" type="text" rows="2" placeholder="Add another win"></textarea>
+
+                <!-- button -->
+                <p class="mt-2 text-center">
+                    <input class="btn btn-warning font-slim-joe" type="submit" role="button" value="Add New Daily Win">
+                </p>
+
+            </form>
+        </div>
 
         <div id="the-wins">
             <?php
@@ -69,17 +80,7 @@ require_once '../components/header.php';
         </div>
 
 
-        <form id="form-add-new-daily-win" name="form-add-new-daily-win" action="../app/add-new-win.php" method="POST">
-
-            <!-- new win -->
-            <textarea id="input-add-new-daily-win" name="new-win" type="text" rows="2" placeholder="Add another win"></textarea>
-
-            <!-- button -->
-            <p class="mt-2 text-center">
-                <input class="btn btn-warning font-slim-joe" type="submit" role="button" value="Add New Daily Win">
-            </p>
-
-        </form>
+        
 
 
 
@@ -101,18 +102,13 @@ require_once '../components/header.php';
 
     </div>
 
-
-
-
-
-
 </div>
 
 
 
 
 
-
+<!--
 <script>
 $(document).ready(function() {
 
@@ -131,7 +127,7 @@ $(document).ready(function() {
 });
 
 
-</script>
+</script> -->
 
 <?php
 require_once '../components/footer.php';

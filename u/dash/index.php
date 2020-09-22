@@ -1,7 +1,12 @@
 <?php
 
+session_start();
+date_default_timezone_set('America/Los_Angeles');
+
 /*
-WHAT THIS PAGE DOES
+WHAT THE DASHBOARD DOES
+1. "authenticate"
+2. requires & vars
 
 - Section 1 - validate user login; if not logged in, sign them out (the signout flow will take care of them)
 - Section 2 - gather static variables
@@ -12,115 +17,36 @@ WHAT THIS PAGE DOES
 
 
 
-
-
-
-
-
-
-
-// default daily wins
-// $dailyWin1 = 'Make your bed — https://youtu.be/3sK3wJAxGfs';
-// $dailyWin2 = 'Brush your teeth, brush your hair, wear clean clothes — have some SELF-respect';
-// $dailyWin3 = 'EARN your PMA positive mental attitude. You can ONLY feel good about yourself and your life if you\'ve DONE something to feel good about! A negative mind can ONLY see the roadblocks, and never the solutions. So EARN your PMA by doing a BUNCH of things that make you feel good, feel proud.';
-
-// $stringDefaultWins = "INSERT INTO daily_wins (user_id, win) VALUES (:userId, :win1), (:userId, :win2), (:userId, :win3)";
-// $sqlDailyWins = $db->prepare($stringDefaultWins);
-// try {
-//     $sqlDailyWins->execute([
-//         'userId' => $userId,
-//         'win1' => $dailyWin1,
-//         'win2' => $dailyWin2,
-//         'win3' => $dailyWin3
-//     ]);
-// } catch (PDOException $e) {
-//     /* DEV */
-//     $output .= $e->getMessage();
-//     echo $output;
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-session_start();
-date_default_timezone_set('America/Los_Angeles');
-
-
-/* SECTION 1 */
-// if not logged in: send to signout.
+/* SECTION 1 - check for login */
 if ( !isset($_COOKIE['user_id']) or !isset($_COOKIE['username']) ) {
-    header('Location: /u/signout');
+    $headerString = 'Location: /u/signout';
+    header($headerString);
 }
 
 
-
-/* SECTION 2 */
-// if logged in: get user info & dates
+/* SECTION 2 - requires & vars */
 require '../app/db.php';
+// user info
 $userId = $_COOKIE['user_id'];
 $username = $_COOKIE['username'];
+// ui
 $dateToday = isset($_GET['date']) ? strval($_GET['date']) : strval(date('Y-m-d'));
-$dateYesterday = strval( date('Y-m-d', ( strtotime('-1 day', strtotime( $dateToday )) )) );
+$dateYesterday = strval( date('Y-m-d', (strtotime('-1 day', strtotime( $dateToday )) )) );
 $dateTomorrow = strval( date('Y-m-d', ( strtotime('+1 day', strtotime( $dateToday )) )) );
-$todayWins; // this array will contain all of user's wins for today
-$todayWinsJson;
-$eachTodayWinId = []; // this array will contain the id of each of today's win; used to check if user's daily_wins exist in todayWins
-$dailyWins = []; // this array will contain all of user's daily_wins, to check if each daily_win exists in todayWins.
-$stackCount = 0; // this will display how many of today's wins have been STACKED
+setcookie('date_today', $dateToday, time()+120, '/');
+$stackCount = 0;
+// user's daily wins
+$dailyWins = [];
+$dailyWinsIds = [];
+$addTheseDailyWinsToTodayWins = [];
+// today's wins
+$todayWins = [];
+$todayWinsIds = [];
+$todayWinsJson = '';
 
 
-
-
-/* SECTION 3 */
-// i wanna see the win_ids to make sure each daily_win is in wins
-
-// $todayWins = all of user's wins (w/ date = today)
-$sqlTodayWins = $db->prepare("SELECT id, win_id, win, note, stacked FROM wins WHERE user_id = :userId AND date = :dateToday");
-try {
-    $sqlTodayWins->execute([
-        'userId' => $userId,
-        'dateToday' => $dateToday
-    ]);
-} catch (PDOException $e) {
-    $output .= $e->getMessage();
-    echo $output;
-}
-$todayWins = $sqlTodayWins->rowCount() ? $sqlTodayWins->fetchAll(PDO::FETCH_ASSOC) : null;
-
-
-// $eachTodayWinId = win_id of each item in $todayWins
-if ($todayWins) {
-    foreach($todayWins as $todayWin) {
-        if ( $todayWin['win_id'] and !in_array($todayWin['win_id'], $eachTodayWinId) ) {
-            $eachTodayWinId[] = $todayWin['win_id'];
-        }
-        if ($todayWin['stacked'] == 1) {
-            $stackCount += 1;
-        }
-    }
-    $todayWinsJson = json_encode($todayWins);
-    // echo json_last_error_msg();
-    die();
-}
-
-// $dailyWins = all of user's daily_wins
+/* SECTION 3 - get user's dailyWins/id's & get user's todayWins/id's */
+// get user's dailyWins
 $sqlDailyWins = $db->prepare("SELECT id, win FROM daily_wins WHERE user_id = :userId");
 try {
     $sqlDailyWins->execute([
@@ -132,109 +58,66 @@ try {
     die();
 }
 $dailyWins = $sqlDailyWins->rowCount() ? $sqlDailyWins->fetchAll(PDO::FETCH_ASSOC) : null;
-// if no daily wins, then add new daily wins
-if (!$dailyWins) {
-
-    // add default daily wins
-    $dailyWin1 = 'Make your bed - youtu.be/3sK3wJAxGfs';
-    $dailyWin2 = 'Brush your teeth, brush your hair, wear clean clothes -- have some SELF-respect';
-    $dailyWin3 = "EARN your PMA positive mental attitude. You can ONLY feel good about yourself and your life if you've DONE something to feel good about! A negative mind can ONLY see the roadblocks, and never the solutions. So EARN your PMA by doing a BUNCH of things that make you feel good, feel proud.";
-
-    $sqlAddDefaultDailyWins = $db->prepare("INSERT INTO daily_wins (user_id, win) VALUES (:userId, :win1), (:userId, :win2), (:userId, :win3)");
-    try {
-        $sqlAddDefaultDailyWins->execute([
-            'userId' => $userId,
-            'win1' => $dailyWin1,
-            'win2' => $dailyWin2,
-            'win3' => $dailyWin3
-        ]);
-    } catch (PDOException $e) {
-        $output .= $e->getMessage();
-        echo $output;
-        die();
+// get user's dailyWinsIds
+if (count($dailyWins) > 0) {
+    foreach ($dailyWins as $win) {
+        $dailyWinsIds[] = $win['id'];
     }
-    $headerString = 'Location: /u/dash?date=' . $dateToday;
+}
+// get user's todayWins
+$sqlTodayWins = $db->prepare("SELECT id, win_id, win, note, stacked FROM wins WHERE user_id = :userId AND date = :dateToday");
+try {
+    $sqlTodayWins->execute([
+        'userId' => $userId,
+        'dateToday' => $dateToday
+    ]);
+} catch (PDOException $e) {
+    $output .= $e->getMessage();
+    echo $output;
+    die();
+}
+$todayWins = $sqlTodayWins->rowCount() ? $sqlTodayWins->fetchAll(PDO::FETCH_ASSOC) : null;
+// get user's todayWinsIds
+if (count($todayWins) > 0) {
+    foreach($todayWins as $win) {
+        $todayWinsIds[] = $win['win_id'];
+        if ($win['stacked'] == 1) {
+            $stackCount += 1;
+        }
+    }
+    $todayWinsJson = json_encode($todayWins);
+}
+
+
+/* SECTION 4 - compare user's dailyWins & todayWins */
+if( !$dailyWins ) {
+    // if user doesn't have any dailyWins, then add these (hardcoded 2020-08-29)
+    $headerString = 'Location: ../app/add-default-daily-wins-to-user.php';
     header($headerString);
-
-}
-
-
-/* SECTION 4 */
-// check if each daily_win is in $todayWins; add to $addThese if not
-$addThese = [];
-foreach($dailyWins as $dailyWin) {
-    if ( !in_array($dailyWin['id'], $eachTodayWinId) ) {
-        $addThese[] = $dailyWin;
+} else {
+    foreach($dailyWins as $win) {
+        if (!in_array($win['id'], $todayWinsIds)) {
+            $addTheseDailyWinsToTodayWins[] = $win;
+        }
     }
 }
-// add dailyWins as required
-$stringNewDailyWins = '';
-if ( count($addThese) ) {
-    $stringNewDailyWins .= "INSERT INTO wins (user_id, win_id, date, win) VALUES ";
 
-    foreach($addThese as $newWin) {
-        $stringNewDailyWins .= '(' . $userId . ', ' . $newWin['id'] . ', "' . strval($dateToday) . '", "' . $newWin['win'] . '"),';
-    }
-    $stringNewDailyWins = rtrim($stringNewDailyWins, ',');
-}
-if ( strlen($stringNewDailyWins) ) {
-    $sqlAddNewDailyWins = $db->prepare($stringNewDailyWins);
-    try {
-        $sqlAddNewDailyWins->execute([
-            'userId' => $userId,
-            'dateToday' => $dateToday
-        ]);
-    } catch (PDOException $e) {
-        $output .= $e->getMessage();
-        echo $output;
-        die();
-    }
-    $headerString = 'Location: /u/dash?date=' . $dateToday;
+if (count($addTheseDailyWinsToTodayWins) > 0) {
+    // pass wins assoc_array to cookie
+    $cookieAddWinsToToday = json_encode($addTheseDailyWinsToTodayWins);
+    setcookie('add_wins_to_today', $cookieAddWinsToToday, time()+300, '/');
+    // redirect to script
+    $headerString = 'Location: ../app/add-daily-wins-to-today.php';
     header($headerString);
 }
 
-require_once '../components/header.php';
 
-// var_dump($todayWins);
-// var_dump($todayWins);
-// var_dump($todayWins);
-// var_dump($todayWins);
-// var_dump($todayWins);
-// var_dump($todayWins);
-// foreach($todayWins as $win) {
-//     echo '<pre>';
-//     var_dump($win);
-//     echo '</pre>';
-// }
-var_dump($todayWinsJson);
-echo '<p style="width: 100%; height: 300px; background-color: black;">lol</p>';
-var_dump($todayWins);
-die();
+include_once '../components/header.php';
 ?>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 <div id="page-dash" class="stackin-page py-3 px-5 stackin-fullscreen-row">
-    <!-- <div>
-        <p>dev echo's</p>
-    <?php
-        // echo '$todayWins: ';
-        // var_dump($todayWins);
-        // echo '<br>';
-    ?>
-    </div> -->
 
     <!-- dates -->
     <div id="date-wins" class="py-3 text-center">
@@ -412,4 +295,4 @@ function unstackWin(winId) {
 
 
 <?php
-require_once '../components/footer.php';
+include_once '../components/footer.php';

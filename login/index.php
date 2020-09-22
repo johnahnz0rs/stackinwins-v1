@@ -1,8 +1,12 @@
 <?php
 session_start();
+$userId = isset($_COOKIE['user_id']) ? $_COOKIE['user_id'] : null;
+
+    // echo 'you are at /login/index.php';
+    // die();
 
 // check if user is logged in & not null
-if ( isset($_COOKIE['user_id']) and $_COOKIE['user_id'] ) {
+if ( $userId ) {
     header('Location: ../u/dash');
 } else {
     require_once '../components/header-nouser.php';

@@ -26,48 +26,48 @@
         -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: black;
     }
-    p {
-        font-style: italic;
-    }
-    ol {
-        max-width: 340px;
-        // $breakpoint-tablet: 768px;
-        @media (min-width: 768px) {
-            max-width: 440px;
-        }
-    }
+    // p {
+    //     font-style: italic;
+    //     font-size: 36px !important;
+    // }
+    // ol {
+    //     max-width: 340px;
+    //     // $breakpoint-tablet: 768px;
+    //     @media (min-width: 768px) {
+    //         max-width: 440px;
+    //     }
+    // }
 }
 
 
 /* components/about.php */
 #section-about {
     background-color: gold;
-    padding-top: 80px;
-    padding-bottom: 80px;
-    .card-group .card {
-        border: none;
-        background-color: rgba(0,0,0,0.5);
-        color: white;
-        .card-header {
-            border: none;
-        }
-        .card-title {
-            border: none;
-            font-family: 'BigJohn', Arial, sans-serif;
-        }
-        .card-text {
-            font-family: 'SlimJoe', Arial, sans-serif;
-        }
-        .card-footer {
-            border: none;
-        }
+    padding: 80px 40px;
+    .blurb {
+        margin-bottom: 36px;
     }
-
+    h2 {
+        color: #ffffff;
+        text-shadow: 2px 2px 0 rgba(9,9,9,1);
+        font-size: 38px;
+        font-weight: bold;
+    }
+    h4 {
+        color: #111111;
+        /* text-shadow: 2px 2px 0 rgba(0,0,0,1); */
+    }
+    a.btn.btn-lg.btn-outline-dark {
+        // background-color: #ffffff;
+        border-width: 3px;
+        // color: gold;
+        // text-shadow: 3px 3px 0 rgba(9,9,9,1);
+    }
 }
 
 
 
-/* components/signup.php */
+/* /signup */
 #section-signup {
     padding-top: 72px;
     // background-color: gold;
@@ -90,6 +90,7 @@
     }
 }
 
+/* /login */
 #section-login {
     padding-top: 72px;
     padding-bottom: 88px;

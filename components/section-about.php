@@ -1,6 +1,30 @@
 <?php
-
+// deprecated on 2020-09-01
 ?>
+
+
+
+<style>
+    /* v1 */
+    .card-group .card {
+        border: none;
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+    }
+    .card-group .card .card-header {
+        border: none;
+    }
+    .card-group .card .card-title {
+        border: none;
+        font-family: 'BigJohn', Arial, sans-serif;
+    }
+    .card-group .card .card-text {
+        font-family: 'SlimJoe', Arial, sans-serif;
+    }
+    .card-group .card .card-footer {
+        border: none;
+    }
+</style>
 
 <!-- v2 -->
 <div id="section-about" class="container-fluid">
