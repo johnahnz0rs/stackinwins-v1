@@ -98,6 +98,22 @@ body {
   #stackin-footer a:hover {
     text-decoration: none;
     font-weight: bold; }
+  #stackin-footer ul {
+    list-style-type: none; }
+    #stackin-footer ul li {
+      display: inline;
+      font-style: italic;
+      letter-spacing: 0.3px;
+      margin: 6px 14px; }
+  #stackin-footer #section-whatdo-button {
+    display: block;
+    padding: 42px;
+    text-align: center; }
+    #stackin-footer #section-whatdo-button button {
+      background-color: lightblue;
+      font-weight: bold;
+      padding: 8px;
+      margin: 8px; }
 
 /* Dashboard */
 /* Dashboard */
@@ -165,6 +181,37 @@ body {
   @media (max-width: 768px) {
     #page-my-wins-delete #win {
       border: 1px solid black; } }
+
+#page-whatdo-dash {
+  padding-top: 40px; }
+  #page-whatdo-dash h1 {
+    text-align: center;
+    margin: 20px 0; }
+  #page-whatdo-dash #section-my-projects {
+    display: block;
+    padding: 40px 0;
+    text-align: center; }
+    #page-whatdo-dash #section-my-projects a {
+      display: block;
+      /* text-align: center; */ }
+    #page-whatdo-dash #section-my-projects p {
+      padding: 35px;
+      margin: 12px;
+      display: inline-block;
+      text-align: center;
+      border: 1px solid black; }
+      #page-whatdo-dash #section-my-projects p a {
+        display: block;
+        font-size: .7em;
+        color: darkolivegreen; }
+  #page-whatdo-dash #section-do-this {
+    display: block;
+    padding: 24px;
+    text-align: center; }
+    #page-whatdo-dash #section-do-this button {
+      display: inline-block;
+      padding: 18px;
+      margin: 8px 24px; }
 
 /* General */
 /* General */

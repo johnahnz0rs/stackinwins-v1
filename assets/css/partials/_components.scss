@@ -26,17 +26,6 @@
         -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: black;
     }
-    // p {
-    //     font-style: italic;
-    //     font-size: 36px !important;
-    // }
-    // ol {
-    //     max-width: 340px;
-    //     // $breakpoint-tablet: 768px;
-    //     @media (min-width: 768px) {
-    //         max-width: 440px;
-    //     }
-    // }
 }
 
 
@@ -129,5 +118,29 @@
         text-decoration: none;
         font-weight: bold;
     }
+
+    ul {
+        list-style-type: none;
+        li {
+            display: inline;
+            font-style: italic;
+            letter-spacing: 0.3px;
+            margin: 6px 14px;
+        }
+    }
     // min-height: 50px;
+
+    #section-whatdo-button {
+        display: block;
+        padding: 42px;
+        text-align: center;
+        button {
+            background-color: lightblue;
+            font-weight: bold;
+            padding: 8px;
+            margin: 8px;
+        }
+    }
+
+    
 }

@@ -1,0 +1,52 @@
+#page-whatdo-dash {
+    padding-top: 40px;
+
+    h1 { text-align: center; margin: 20px 0; }
+
+
+    #section-my-projects {
+        display: block;
+        padding: 40px 0;
+        text-align: center;
+        a {
+            display: block;
+            /* text-align: center; */
+        }
+        p {
+            padding: 35px;
+            margin: 12px;
+            display: inline-block;
+            text-align: center;
+            border: 1px solid black;
+
+            a {
+                display: block;
+                font-size: .7em;
+                color: darkolivegreen;
+            }
+        }
+
+    }
+
+
+
+
+    #section-do-this {
+        display: block;
+        padding: 24px;
+        text-align: center;
+
+        button {
+            display: inline-block;
+            padding: 18px;
+            margin: 8px 24px;
+        }
+    }
+
+
+}
+
+
+
+
+

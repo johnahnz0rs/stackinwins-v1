@@ -26,7 +26,7 @@ $sqlDailyWins = $db->prepare("
 ");
 try {
     $sqlDailyWins->execute([
-        'userId' => $userId,
+        'userId' => $userId
     ]);
 } catch (PDOException $e) {
     $output .= $e->getMessage();
@@ -80,7 +80,7 @@ require_once '../components/header.php';
         </div>
 
 
-        
+
 
 
 

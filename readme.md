@@ -2,6 +2,22 @@
 
 
 
+
+**10/11/20**
+the main purposes of this site are:
+- whatDo
+- daily morning program
+- review my performance
+- about/faq
+    - about us
+    - about ww & daily, consistent program
+    - macros, bmr, 
+
+
+
+
+
+
 **4/11/20**
 - ok, i made the /my-wins page
 - right now, i have this huge form, taking all daily_wins; but i don't think this will work.

@@ -22,8 +22,7 @@
 
     <title>STACKIN wins</title>
 
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -52,13 +51,13 @@
                     <a class="nav-link" href="/u/account">Account</a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="/u/dash">Dashboard</a>
+                    <a class="nav-link" href="/u/whatdo">What Do?</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/u/my-wins">My Program</a>
+                    <a class="nav-link" href="/u/program">Program</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/u/faq">FAQ</a>
+                    <a class="nav-link" href="/u/account">My Wins</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/u/signout">Sign Out</a>
