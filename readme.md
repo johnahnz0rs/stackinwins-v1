@@ -1,8 +1,8 @@
 # stackinwins.com
 
 ## NOTE
-This is v1 of stackinwins.com, originally written in vanilla PHP and jQuery to serve interactive UI/UX, with a MySQL database to hold data.
-Circa 2022, stackinwins.com was re-written and upgraded in Vue + Vuetify + Firebase (NoSQL) — you can see the live vue site [here](https://stackinwins.com).
+This repo is v1 of stackinwins.com, originally written in vanilla PHP and jQuery to serve interactive UI/UX, with a MySQL database to hold data.
+Circa 2022, stackinwins.com was re-written and upgraded in Vue + Vuetify + Firebase (NoSQL) (lives in a separate private repo) — you can see the live vue site [here](https://stackinwins.com).
 
 
 
