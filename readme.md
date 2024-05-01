@@ -1,6 +1,8 @@
 # stackinwins.com
 
-
+*NOTE*
+This is v1 of stackinwins.com, originally written in vanilla PHP and jQuery to serve interactive UI/UX, with a MySQL database to hold data.
+stackinwins.com has since been re-written and upgraded (circa 2022) in Vue + Vuetify + Firebase (NoSQL).
 
 
 **10/11/20**
