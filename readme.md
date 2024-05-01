@@ -5,6 +5,18 @@ This is v1 of stackinwins.com, originally written in vanilla PHP and jQuery to s
 Circa 2022, stackinwins.com was re-written and upgraded in Vue + Vuetify + Firebase (NoSQL) — you can see the live vue site [here](https://stackinwins.com).
 
 
+
+
+
+
+
+
+
+
+
+====================
+OLD
+
 **10/11/20**
 the main purposes of this site are:
 - whatDo
